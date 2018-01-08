@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<language id="gbz80" _name="GBz80" version="2.0" _section="Source">
+	<metadata>
+		<property name="mimetypes"></property>
+		<property name="globs">*.asm;*.z80;*.inc</property>
+		<property name="line-comment-start">;</property>
+	</metadata>
+	
+	<styles>
+		<style id="warning"       _name="Warning"             map-to="def:warning"/>
+		<style id="string"        _name="String"              map-to="def:string"/>
+		<style id="decimal"       _name="Decimal number"      map-to="def:decimal"/>
+		<style id="hexadecimal"   _name="Hexadecimal number"  map-to="def:base-n-integer"/>
+		<style id="comment"       _name="Comment"             map-to="def:comment"/>
+		<style id="instruction"   _name="Instruction"         map-to="def:keyword"/>
+		<style id="register"      _name="Register"            map-to="def:constant"/>
+		<style id="condition"     _name="Condition"           map-to="def:constant"/>
+		<style id="memref"        _name="Memory reference"    map-to="def:identifier"/>
+		<style id="preprocessor"  _name="Preprocessor"        map-to="def:preprocessor"/>
+		<style id="builtin"       _name="Builtin variable"    map-to="def:builtin"/>
+		<style id="common-reg"    _name="Hardware register"   map-to="def:identifier"/>
+    </styles>
+    
+	
+	<default-regex-options case-sensitive="false"/>
+	
+	<definitions>
+		
+		<context id="string" style-ref="string" end-at-line-end="true" class="string" class-disabled="no-spell-check">
+			<start>"</start>
+			<end>"</end>
+		</context>
+		
+		<context id="decimal" style-ref="decimal">
+			<match>-?(0|[1-9][0-9]*)</match>
+		</context>
+		
+		<context id="hexadecimal" style-ref="hexadecimal">
+			<match>\$[0-9A-Fa-f]+</match>
+		</context>
+		
+		<context id="comment" style-ref="comment" end-at-line-end="true" class="comment" class-disabled="no-spell-check">
+			<start>;</start>
+		</context>
+		
+		<context id="preproc-funcs" style-ref="preprocessor">
+			<keyword>DIV</keyword>
+			<keyword>MUL</keyword>
+			<keyword>SIN</keyword>
+			<keyword>COS</keyword>
+			<keyword>TAN</keyword>
+			<keyword>ASIN</keyword>
+			<keyword>ACOS</keyword>
+			<keyword>ATAN</keyword>
+			<keyword>ATAN2</keyword>
+			<keyword>STRLEN</keyword>
+			<keyword>STRCAT</keyword>
+			<keyword>STRCMP</keyword>
+			<keyword>STRIN</keyword>
+			<keyword>STRSUB</keyword>
+			<keyword>STRUPR</keyword>
+			<keyword>STRLWR</keyword>
+			
+			<keyword>BANK</keyword>
+			<keyword>DEF</keyword>
+			<keyword>HIGH</keyword>
+			<keyword>LOW</keyword>
+		</context>
+		
+		
+		<context id="instruction" style-ref="instruction">
+			<keyword>add</keyword>
+			<keyword>adc</keyword>
+			<keyword>and</keyword>
+			<keyword>bit</keyword>
+			<keyword>call</keyword>
+			<keyword>ccf</keyword>
+			<keyword>cp</keyword>
+			<keyword>cpl</keyword>
+			<keyword>dec</keyword>
+			<keyword>di</keyword>
+			<keyword>ei</keyword>
+			<keyword>halt</keyword>
+			<keyword>inc</keyword>
+			<keyword>jp</keyword>
+			<keyword>jr</keyword>
+			<keyword>ld</keyword>
+			<keyword>ldd</keyword>
+			<keyword>ldh</keyword>
+			<keyword>ldi</keyword>
+			<keyword>nop</keyword>
+			<keyword>or</keyword>
+			<keyword>pop</keyword>
+			<keyword>push</keyword>
+			<keyword>res</keyword>
+			<keyword>ret</keyword>
+			<keyword>reti</keyword>
+			<keyword>rl</keyword>
+			<keyword>rla</keyword>
+			<keyword>rlc</keyword>
+			<keyword>rlca</keyword>
+			<keyword>rr</keyword>
+			<keyword>rra</keyword>
+			<keyword>rrc</keyword>
+			<keyword>rrca</keyword>
+			<keyword>rst</keyword>
+			<keyword>sub</keyword>
+			<keyword>sbc</keyword>
+			<keyword>scf</keyword>
+			<keyword>set</keyword>
+			<keyword>sla</keyword>
+			<keyword>sra</keyword>
+			<keyword>srl</keyword>
+			<keyword>stop</keyword>
+			<keyword>swap</keyword>
+			<keyword>xor</keyword>
+		</context>
+		
+		<context id="conditions" style-ref="condition">
+			<keyword>nc</keyword>
+			<keyword>c</keyword>
+			<keyword>nz</keyword>
+			<keyword>z</keyword>
+		</context>
+		
+		<context id="registers" style-ref="register">
+			<keyword>a</keyword>
+			<keyword>b</keyword>
+			<keyword>c</keyword>
+			<keyword>d</keyword>
+			<keyword>e</keyword>
+			<keyword>h</keyword>
+			<keyword>l</keyword>
+			<keyword>af</keyword>
+			<keyword>bc</keyword>
+			<keyword>de</keyword>
+			<keyword>hl</keyword>
+			<keyword>sp</keyword>
+		</context>
+		
+		<context id="memrefs" style-ref="memref">
+			<match>\[(b?c|de|hl[id+-]?)\]</match>
+		</context>
+		
+		
+		<context id="builtins" style-ref="builtin">
+			<keyword>$</keyword>
+			<keyword>_PI</keyword>
+			<keyword>_RS</keyword>
+			<keyword>_NARG</keyword>
+			<keyword>__LINE__</keyword>
+			<keyword>__FILE__</keyword>
+			<keyword>__DATE__</keyword>
+			<keyword>__TIME__</keyword>
+			<keyword>__ISO_8601_LOCAL__</keyword>
+			<keyword>__ISO_8601_UTC__</keyword>
+			<keyword>__UTC_YEAR__</keyword>
+			<keyword>__UTC_MONTH__</keyword>
+			<keyword>__UTC_DAY__</keyword>
+			<keyword>__UTC_HOUR__</keyword>
+			<keyword>__UTC_MINUTE__</keyword>
+			<keyword>__UTC_SECOND__</keyword>
+			<keyword>__RGBDS_MAJOR__</keyword>
+			<keyword>__RGBDS_MINOR__</keyword>
+			<keyword>__RGBDS_PATCH__</keyword>
+		</context>
+		
+		<context id="common-regs" style-ref="common-reg">
+			<!-- Constants, representing hardware registers, defined in the commonly used hardware.inc -->
+			<!-- https://github.com/tobiasvl/hardware.inc/ -->
+			<keyword>_HW</keyword>
+			<keyword>_VRAM</keyword>
+			<keyword>_SCRN0</keyword>
+			<keyword>_SCRN1</keyword>
+			<keyword>_SRAM</keyword>
+			<keyword>_RAM</keyword>
+			<keyword>_OAMRAM</keyword>
+			<keyword>_AUD3WAVERAM</keyword>
+			<keyword>_HRAM</keyword>
+			
+			<keyword>rRAMG</keyword>
+			<keyword>rROMB0</keyword>
+			<keyword>rROMB1</keyword>
+			<keyword>rRAMB</keyword>
+			
+			<keyword>rP1</keyword>
+			<keyword>rSB</keyword>
+			<keyword>rSC</keyword>
+			<keyword>rDIV</keyword>
+			<keyword>rTIMA</keyword>
+			<keyword>rTMA</keyword>
+			<keyword>rTAC</keyword>
+			<keyword>rIF</keyword>
+			
+			<keyword>rNR10</keyword>
+			<keyword>rAUD1SWEEP</keyword>
+			<keyword>rNR11</keyword>
+			<keyword>rAUD1LEN</keyword>
+			<keyword>rNR12</keyword>
+			<keyword>rAUD1ENV</keyword>
+			<keyword>rNR13</keyword>
+			<keyword>rAUD1LOW</keyword>
+			<keyword>rNR14</keyword>
+			<keyword>rAUD1HIGH</keyword>
+			<keyword>rNR21</keyword>
+			<keyword>rAUD2LEN</keyword>
+			<keyword>rNR22</keyword>
+			<keyword>rAUD2ENV</keyword>
+			<keyword>rNR23</keyword>
+			<keyword>rAUD2LOW</keyword>
+			<keyword>rNR24</keyword>
+			<keyword>rAUD2HIGH</keyword>
+			<keyword>rNR30</keyword>
+			<keyword>rAUD3ENA</keyword>
+			<keyword>rNR31</keyword>
+			<keyword>rAUD3LEN</keyword>
+			<keyword>rNR32</keyword>
+			<keyword>rAUD3LEVEL</keyword>
+			<keyword>rNR33</keyword>
+			<keyword>rAUD3LOW</keyword>
+			<keyword>rNR34</keyword>
+			<keyword>rAUD3HIGH</keyword>
+			<keyword>rNR41</keyword>
+			<keyword>rAUD4LEN</keyword>
+			<keyword>rNR42</keyword>
+			<keyword>rAUD4ENV</keyword>
+			<keyword>rNR43</keyword>
+			<keyword>rAUD4POLY</keyword>
+			<keyword>rNR44</keyword>
+			<keyword>rAUD4GO</keyword>
+			
+			<keyword>rLCDC</keyword>
+			<keyword>rSTAT</keyword>
+			<keyword>rSCY</keyword>
+			<keyword>rSCX</keyword>
+			<keyword>rLY</keyword>
+			<keyword>rLYC</keyword>
+			<keyword>rDMA</keyword>
+			<keyword>rBGP</keyword>
+			<keyword>rOBP0</keyword>
+			<keyword>rOBP1</keyword>
+			<keyword>rWY</keyword>
+			<keyword>rWX</keyword>
+			<keyword>rKEY1</keyword>
+			<keyword>rVBK</keyword>
+			<keyword>rHDMA1</keyword>
+			<keyword>rHDMA2</keyword>
+			<keyword>rHDMA3</keyword>
+			<keyword>rHDMA4</keyword>
+			<keyword>rHDMA5</keyword>
+			<keyword>rRP</keyword>
+			<keyword>rBCPS</keyword>
+			<keyword>rBCPD</keyword>
+			<keyword>rOCPS</keyword>
+			<keyword>rOCPD</keyword>
+			<keyword>rSVBK</keyword>
+			
+			<keyword>rIE</keyword>
+		</context>
+		
+		
+		<context id="operations">
+			<include>
+				<context ref="instruction"/>
+				<context ref="conditions"/>
+				<context ref="registers"/>
+				<context ref="memrefs"/>
+				<context ref="decimal"/>
+				<context ref="hexadecimal"/>
+				<context ref="preproc-funcs"/>
+				<context ref="builtins"/>
+				<context ref="common-regs"/>
+			</include>
+		</context>
+		
+		
+		<context id="preprocessor" style-ref="preprocessor" end-at-line-end="true">
+			<start extended="true">
+				\%[( SECTION
+				| EXPORT
+				| GLOBAL
+				| PURGE
+				
+				| DB
+				| DW
+				| DS
+				
+				| INCLUDE
+				| INCBIN
+				
+				| UNION
+				| NEXTU
+				| ENDU
+				
+				| PRINTT
+				| PRINTV
+				| PRINTF
+				
+				| FAIL
+				| WARN
+				
+				| IF
+				| ELIF
+				| ELSE
+				| ENDC
+				
+				| MACRO
+				| ENDM
+				| REPT
+				| ENDR
+				| SHIFT
+				| \\[1-9@]
+				
+				| EQU
+				| EQUS
+				| SET
+				
+				| OPT
+				| PUSHO
+				| POPO
+				
+				| RSRESET
+				| RSSET
+				| RB
+				| RW
+				| RL)\%]
+			</start>
+			<include>
+				<context ref="string"/>
+				<context ref="decimal"/>
+				<context ref="hexadecimal"/>
+				<context ref="comment"/>
+				<context ref="preproc-funcs"/>
+				<context ref="builtins"/>
+				<context ref="common-regs"/>
+				
+				<!-- Keywords -->
+				<context>
+					<keyword>ROM0</keyword>
+					<keyword>ROMX</keyword>
+					<keyword>VRAM</keyword>
+					<keyword>SRAM</keyword>
+					<keyword>WRAM0</keyword>
+					<keyword>WRAMX</keyword>
+					<keyword>OAM</keyword>
+					<keyword>HRAM</keyword>
+					
+					<keyword>BANK</keyword>
+					<keyword>ALIGN</keyword>
+				</context>
+				
+				<!-- Deprecated keywords -->
+				<context style-ref="warning">
+					<keyword>HOME</keyword>
+					<keyword>CODE</keyword>
+					<keyword>DATA</keyword>
+					<keyword>BSS</keyword>
+				</context>
+			</include>
+		</context>
+		
+		
+		<context id="gbz80" class="no-spell-check">
+			<include>
+				<context ref="comment"/>
+				<context ref="string"/>
+				<context ref="decimal"/>
+				<context ref="hexadecimal"/>
+				
+				<context ref="builtins"/>
+				<context ref="common-regs"/>
+				
+				<context ref="operations"/>
+				<context ref="preprocessor"/>
+			</include>
+		</context>
+	</definitions>
+</language>
