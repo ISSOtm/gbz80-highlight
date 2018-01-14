@@ -42,6 +42,11 @@
 		
 		<context id="comment" style-ref="comment" end-at-line-end="true" class="comment" class-disabled="no-spell-check">
 			<start>;</start>
+			<include>
+				<context style-ref="warning">
+					<keyword>TODO</keyword>
+				</context>
+			</include>
 		</context>
 		
 		<context id="preproc-funcs" style-ref="preprocessor">
