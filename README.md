@@ -2,6 +2,8 @@
 
 A collection of syntax highlighting files for Game Boy assembly.
 
+For installation instructions, please refer to `INSTALL.md`.
+
 
 ## List of files
 
