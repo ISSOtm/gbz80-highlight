@@ -9,7 +9,7 @@ For installation instructions, please refer to `INSTALL.md`.
 
 *GBz80.lang* - For **gedit** (and generally any editor using gtksourceview)
 
-*GBz80.xml* - For **Notepad++**
+*GBz80.xml* and *GBz80Dark.xml* - For **Notepad++**
 
 
 ## Contributing
